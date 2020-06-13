@@ -121,7 +121,7 @@ class StoryBrain {
     Story(
         storyIndex: 14,
         storyTitle:
-        'Oh no, PIRATES!!',
+        'Oh no, PIRATES & VAMPIRES!!',
         choice1: 'Time to WAKE UP!!! and get ready for school',
         choice2: ''),
 
