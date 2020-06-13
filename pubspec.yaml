@@ -1,0 +1,39 @@
+name: goatbo
+description: A new Flutter application.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_launcher_icons: "^0.7.0"
+  cupertino_icons: ^0.1.2
+  audioplayers: ^0.7.8
+
+flutter_icons:
+  image_path_ios: "images/goat.png"
+  image_path_android: "images/goat.png"
+  ios: true
+  android: true
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - images/
+    - assets/
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico/Pacifico-Regular.ttf
