@@ -158,7 +158,7 @@ String image = 'images/box.jpg';
                               }
                               else if (storyBrain.getStoryNumber() == 16) {
                                 image = 'images/nasty.jpg';
-                                audioCache.play('evil_laugh.wav');
+                                audioCache.play('Female Scream.wav');
                               }
                               else {
                                 image = 'images/goat.png';
