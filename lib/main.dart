@@ -1,7 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-
+import 'home.dart';
 import 'story_brain.dart';
 
 void main() => runApp(Reid());
@@ -11,12 +11,11 @@ class Reid extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: StoryPage(),
+      home: VideoExample(),
     );
   }
 }
 
-//AudioPlayer player =  AudioPlayer();
 StoryBrain storyBrain = StoryBrain();
 
 class StoryPage extends StatefulWidget {
@@ -24,33 +23,21 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
-bool _visible = true;
-String image = 'images/box.jpg';
-
-  Duration _duration = new Duration();
-  Duration _position = new Duration();
+  bool _visible = true;
+  String image = 'images/box.jpg';
   AudioPlayer advancedPlayer;
   AudioCache audioCache;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     initPlayer();
   }
 
-  void initPlayer(){
+  void initPlayer() {
     advancedPlayer = new AudioPlayer();
     audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-
-    advancedPlayer.durationHandler = (d) => setState(() {
-      _duration = d;
-    });
-
-    advancedPlayer.positionHandler = (p) => setState(() {
-      _position = p;
-    });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -76,26 +63,12 @@ String image = 'images/box.jpg';
                 ),
               ),
               Align(
-                alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Text(
-                    'Goat Bo the Avenger',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'Pacifico',
-                        fontSize: 48.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue),
-                  ),
-                ),
-              ),
-              Align(
                 alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 36.0),
-                    child: Text(storyBrain.getStory(), style: TextStyle(fontSize: 25.0)),
-                  ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Text(storyBrain.getStory(),
+                      style: TextStyle(fontSize: 25.0)),
+                ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -119,7 +92,6 @@ String image = 'images/box.jpg';
                               } else if (storyBrain.getStoryNumber() == 1) {
                                 image = 'images/goat.png';
                                 audioCache.play('triumph.wav');
-
                               } else if (storyBrain.getStoryNumber() == 2) {
                                 image = 'images/nasty.jpg';
                               } else if (storyBrain.getStoryNumber() == 3) {
@@ -135,34 +107,29 @@ String image = 'images/box.jpg';
                                 image = 'images/sp_light.jpg';
                                 _visible = !_visible;
                                 advancedPlayer.stop();
+                                audioCache.play('shooting_star.wav');
                               } else if (storyBrain.getStoryNumber() == 9) {
                                 image = 'images/door.jpg';
                                 audioCache.play('creaking_door.wav');
                               } else if (storyBrain.getStoryNumber() == 11) {
                                 image = 'images/super_fighters.png';
-                               // audioCache.play('creaking_door.wav');
+                                // audioCache.play('creaking_door.wav');
                                 audioCache.play('applause.wav');
                               } else if (storyBrain.getStoryNumber() == 12) {
                                 image = 'images/darkroom.jpg';
-                              audioCache.play('Female Scream.wav');
+                                audioCache.play('Female Scream.wav');
                               } else if (storyBrain.getStoryNumber() == 13) {
                                 image = 'images/dreams.jpg';
                                 audioCache.play('demon_girls.wav');
-                              }
-                              else if (storyBrain.getStoryNumber() == 14) {
+                              } else if (storyBrain.getStoryNumber() == 14) {
                                 image = 'images/pirates_pic.png';
-                              }
-                              else if (storyBrain.getStoryNumber() == 15) {
+                              } else if (storyBrain.getStoryNumber() == 15) {
                                 image = 'images/bombs.png';
                                 audioCache.play('bomb.wav');
-                              }
-                              else if (storyBrain.getStoryNumber() == 16) {
+                              } else if (storyBrain.getStoryNumber() == 16) {
                                 image = 'images/nasty.jpg';
                                 audioCache.play('Female Scream.wav');
-                              }
-                              else {
-                                image = 'images/goat.png';
-                              }
+                              } else {}
                             });
                           },
                           color: Colors.red,
@@ -190,9 +157,9 @@ String image = 'images/box.jpg';
 
                                 if (storyBrain.getStoryNumber() == 1) {
                                   image = 'images/goat.png';
-                                }  else if (storyBrain.getStoryNumber() == 0) {
+                                } else if (storyBrain.getStoryNumber() == 0) {
                                   image = 'images/box.jpg';
-                                }else if (storyBrain.getStoryNumber() == 1) {
+                                } else if (storyBrain.getStoryNumber() == 1) {
                                   image = 'images/spaghetti.png';
                                 } else if (storyBrain.getStoryNumber() == 2) {
                                   image = 'images/manor.jpg';
@@ -201,30 +168,26 @@ String image = 'images/box.jpg';
                                   image = 'images/spaghetti.png';
                                   _visible = !_visible;
                                   advancedPlayer.stop();
-                                }else if (storyBrain.getStoryNumber() == 4) {
-                                  image = 'images/nasty.jpg';
+                                } else if (storyBrain.getStoryNumber() == 4) {
 
-                                }else if (storyBrain.getStoryNumber() == 5) {
+                                } else if (storyBrain.getStoryNumber() == 5) {
                                   image = 'images/spfloor.jpeg';
                                   audioCache.play('cheer.wav');
-
-                                }else if (storyBrain.getStoryNumber() == 7) {
+                                } else if (storyBrain.getStoryNumber() == 7) {
                                   image = 'images/spfloor.jpeg';
-                                 // advancedPlayer.stop();
-                                }else if (storyBrain.getStoryNumber() == 8) {
+                                  // advancedPlayer.stop();
+                                } else if (storyBrain.getStoryNumber() == 8) {
                                   image = 'images/door.jpg';
-                                }else if (storyBrain.getStoryNumber() == 9) {
+                                  audioCache.play('creaking_door.wav');
+                                } else if (storyBrain.getStoryNumber() == 9) {
                                   image = 'images/door.jpg';
-                                }else if (storyBrain.getStoryNumber() == 10) {
+                                } else if (storyBrain.getStoryNumber() == 10) {
                                   image = 'images/box.jpg';
-                                }
-                                else if (storyBrain.getStoryNumber() == 14) {
+                                } else if (storyBrain.getStoryNumber() == 14) {
                                   image = 'images/pirates_pic.png';
                                   audioCache.play('pirates.wav');
-                                }
-                                else if (storyBrain.getStoryNumber() == 15) {
+                                } else if (storyBrain.getStoryNumber() == 15) {
                                   image = 'images/box.jpg';
-
                                 }
                               });
                             },
@@ -238,25 +201,6 @@ String image = 'images/box.jpg';
                           ),
                         ),
                       ),
-//                      FlatButton(
-//                        child: Text('Press Me'),
-//                        onPressed: (){
-//                          audioCache.play('demon_girls.wav');
-//                           // playDemon();
-//
-//
-//                          //player.stop();
-//                        },
-//                      ),
-//                      FlatButton(
-//                        child: Text('Press Me to Stop'),
-//                        onPressed: (){
-//                          advancedPlayer.stop();
-//
-//
-//                          //player.stop();
-//                        },
-//                      ),
                     ],
                   ),
                 ),

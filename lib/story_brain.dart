@@ -179,9 +179,9 @@ class StoryBrain {
     else if (choiceNumber == 1 && _storyNumber == 4) {
       _storyNumber = 16;
     }
-    else if (choiceNumber == 2 && _storyNumber == 4) {
-      _storyNumber = 0;
-    }
+//    else if (choiceNumber == 2 && _storyNumber == 4) {
+//
+//    }
 
     //5
     else if (choiceNumber == 1 && _storyNumber == 5) {
