@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:goatbo/main.dart';
+import 'package:goatbo/story_page.dart';
 import 'package:video_player/video_player.dart';
 
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      home: VideoExample(),
+
+    );
+  }
+}
 class VideoExample extends StatefulWidget {
   @override
   VideoState createState() => VideoState();
