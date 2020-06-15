@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:goatbo/story_page.dart';
 import 'package:video_player/video_player.dart';
@@ -11,6 +13,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       home: VideoExample(),
 
+      routes: {
+        StoryPage.story: (ctx) => StoryPage(),
+
+      },
     );
   }
 }
@@ -22,10 +28,17 @@ class VideoExample extends StatefulWidget {
 class VideoState extends State<VideoExample> {
   VideoPlayerController playerController;
   VoidCallback listener;
+  AudioPlayer advancedPlayer;
+  AudioCache audioCache;
 
+  void initPlayer() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+  }
   @override
   void initState() {
     createVideo();
+    initPlayer();
     super.initState();
     listener = () {
       setState(() {});
@@ -34,7 +47,7 @@ class VideoState extends State<VideoExample> {
 
   void createVideo() {
     if (playerController == null) {
-      playerController = VideoPlayerController.asset("assets/House.mp4")
+      playerController = VideoPlayerController.asset("assets/Door.mp4")
         ..addListener(listener)
         ..setVolume(1.0)
         ..initialize()
@@ -47,6 +60,7 @@ class VideoState extends State<VideoExample> {
         playerController.play();
       }
     }
+
   }
 
   @override
@@ -59,6 +73,7 @@ class VideoState extends State<VideoExample> {
   @override
   void dispose() {
     playerController.dispose();
+    initPlayer();
     super.dispose();
   }
 
@@ -99,9 +114,8 @@ class VideoState extends State<VideoExample> {
                 textColor: Colors.white,
                 onPressed: () {
                   playerController.pause();
-                  Route route =
-                      MaterialPageRoute(builder: (context) => StoryPage());
-                  Navigator.push(context, route);
+                  Navigator.of(context).pushReplacementNamed(StoryPage.story);
+                  audioCache.play('Scary.wav');
                 },
               ),
             ),

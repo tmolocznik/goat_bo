@@ -4,21 +4,13 @@ import 'package:flutter/material.dart';
 import 'video_example.dart';
 import 'story_brain.dart';
 
-//void main() => runApp(MyApp());
-//
-//class MyApp extends StatelessWidget {
-//  Widget build(BuildContext context) {
-//    return MaterialApp(
-//      debugShowCheckedModeBanner: false,
-//      theme: ThemeData.dark(),
-//      home: VideoExample(),
-//    );
-//  }
-//}
+
 
 StoryBrain storyBrain = StoryBrain();
 
 class StoryPage extends StatefulWidget {
+  static const story = '/story';
+
   _StoryPageState createState() => _StoryPageState();
 }
 
@@ -37,6 +29,12 @@ class _StoryPageState extends State<StoryPage> {
   void initPlayer() {
     advancedPlayer = new AudioPlayer();
     audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+  }
+
+  @override
+  void dispose() {
+    initPlayer();
+    super.dispose();
   }
 
   @override
@@ -88,6 +86,7 @@ class _StoryPageState extends State<StoryPage> {
                               storyBrain.nextStory(1);
                               if (storyBrain.getStoryNumber() == 0) {
                                 image = 'images/box.jpg';
+                                audioCache.play('Scary.wav');
                                 advancedPlayer.stop();
                               } else if (storyBrain.getStoryNumber() == 1) {
                                 image = 'images/goat.png';
@@ -159,6 +158,7 @@ class _StoryPageState extends State<StoryPage> {
                                   image = 'images/goat.png';
                                 } else if (storyBrain.getStoryNumber() == 0) {
                                   image = 'images/box.jpg';
+                                  audioCache.play('Scary.wav');
                                 } else if (storyBrain.getStoryNumber() == 1) {
                                   image = 'images/spaghetti.png';
                                 } else if (storyBrain.getStoryNumber() == 2) {
