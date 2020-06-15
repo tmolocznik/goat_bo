@@ -86,7 +86,7 @@ class _StoryPageState extends State<StoryPage> {
                               storyBrain.nextStory(1);
                               if (storyBrain.getStoryNumber() == 0) {
                                 image = 'images/box.jpg';
-                                audioCache.play('Scary.wav');
+                                audioCache.play('Monster Snarling.wav');
                                 advancedPlayer.stop();
                               } else if (storyBrain.getStoryNumber() == 1) {
                                 image = 'images/goat.png';
@@ -158,7 +158,7 @@ class _StoryPageState extends State<StoryPage> {
                                   image = 'images/goat.png';
                                 } else if (storyBrain.getStoryNumber() == 0) {
                                   image = 'images/box.jpg';
-                                  audioCache.play('Scary.wav');
+                                  audioCache.play('Monster Snarling.wav');
                                 } else if (storyBrain.getStoryNumber() == 1) {
                                   image = 'images/spaghetti.png';
                                 } else if (storyBrain.getStoryNumber() == 2) {
@@ -188,6 +188,10 @@ class _StoryPageState extends State<StoryPage> {
                                   audioCache.play('pirates.wav');
                                 } else if (storyBrain.getStoryNumber() == 15) {
                                   image = 'images/box.jpg';
+                                }else if (storyBrain.getStoryNumber() == 13) {
+                                  image = 'images/dreams.jpg';
+                                  audioCache.play('demon_girls.wav');
+
                                 }
                               });
                             },

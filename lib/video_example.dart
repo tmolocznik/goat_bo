@@ -115,7 +115,7 @@ class VideoState extends State<VideoExample> {
                 onPressed: () {
                   playerController.pause();
                   Navigator.of(context).pushReplacementNamed(StoryPage.story);
-                  audioCache.play('Scary.wav');
+                  audioCache.play('Monster Snarling.wav');
                 },
               ),
             ),
